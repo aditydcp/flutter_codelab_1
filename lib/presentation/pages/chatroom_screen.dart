@@ -82,4 +82,10 @@ class _ChatroomScreenState extends State<ChatroomScreen> {
           ),
         )));
   }
+
+  @override
+  void dispose() {
+    _messagerController.dispose();
+    super.dispose();
+  }
 }
