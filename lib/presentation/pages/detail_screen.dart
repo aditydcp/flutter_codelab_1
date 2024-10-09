@@ -37,7 +37,7 @@ class DetailScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   SizedBox(
-                    width: 100.0,
+                    width: 150.0,
                     child: Column(
                       children: <Widget>[
                         const Icon(Icons.calendar_today),
@@ -45,12 +45,13 @@ class DetailScreen extends StatelessWidget {
                         Text(
                           spot.openDays,
                           style: informationTextStyle,
+                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),
                   ),
                   SizedBox(
-                    width: 100.0,
+                    width: 150.0,
                     child: Column(
                       children: <Widget>[
                         const Icon(Icons.timer_rounded),
@@ -58,12 +59,13 @@ class DetailScreen extends StatelessWidget {
                         Text(
                           spot.openTime,
                           style: informationTextStyle,
+                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),
                   ),
                   SizedBox(
-                    width: 100.0,
+                    width: 150.0,
                     child: Column(
                       children: <Widget>[
                         const Icon(Icons.attach_money),
@@ -71,6 +73,7 @@ class DetailScreen extends StatelessWidget {
                         Text(
                           spot.ticketPrice,
                           style: informationTextStyle,
+                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),
@@ -90,16 +93,20 @@ class DetailScreen extends StatelessWidget {
             const SizedBox(height: 10.0),
             SizedBox(
                 height: 200.0,
-                child: ListView.builder(itemBuilder: (context, index) {
-                  final String imageUrl = spot.imageUrls[index];
-                  return Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.network(imageUrl),
-                    ),
-                  );
-                })),
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    final String imageUrl = spot.imageUrls[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.network(imageUrl),
+                      ),
+                    );
+                  },
+                  itemCount: spot.imageUrls.length,
+                )),
           ],
         ),
       ),
